@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { isEmpty } from './utils';
 import { clearFlashMessage } from './actions';
 
 class FlashMessage extends Component {
@@ -25,13 +26,13 @@ class FlashMessage extends Component {
       status: 'hidden'
     };
 
-    this.hideTimeoutInterval = -1;
-    this.hiddenTimeoutInterval = -1;
+    this.hideTimeoutInterval = null;
+    this.hiddenTimeoutInterval = null;
     this.onHideClick = this.onHideClick.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.message && this.props.message !== nextProps.message) {
+    if (!isEmpty(nextProps.message) && this.props.message !== nextProps.message) {
       this.show();
     }
   }
@@ -91,12 +92,12 @@ class FlashMessage extends Component {
   }
 
   clearTimeout() {
-    if (this.hideTimeoutInterval > -1) {
+    if (!isEmpty(this.hideTimeoutInterval)) {
       clearTimeout(this.hideTimeoutInterval);
       this.hideTimeoutInterval = null;
     }
 
-    if (this.hiddenTimeoutInterval > -1) {
+    if (!isEmpty(this.hiddenTimeoutInterval)) {
       clearTimeout(this.hiddenTimeoutInterval);
       this.hiddenTimeoutInterval = null;
     }
@@ -118,7 +119,7 @@ class FlashMessage extends Component {
 
 export default connect(
   (state) => {
-    if (state.flashMessage.type && state.flashMessage.message && !state.flashMessage.isDelayed) {
+    if (!isEmpty(state.flashMessage.type) && !isEmpty(state.flashMessage.message) && !state.flashMessage.isDelayed) {
       return {
         type: state.flashMessage.type,
         message: state.flashMessage.message
