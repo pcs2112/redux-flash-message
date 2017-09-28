@@ -31,7 +31,7 @@ class FlashMessage extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!nextProps.message && this.props.message !== nextProps.message) {
+    if (nextProps.message && this.props.message !== nextProps.message) {
       this.show();
     }
   }
