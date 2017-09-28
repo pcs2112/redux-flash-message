@@ -10,13 +10,13 @@ class FlashMessage extends Component {
     message: PropTypes.string,
     hideTimeout: PropTypes.number,
     onClose: PropTypes.func.isRequired
-  }
+  };
 
   static defaultProps = {
     type: 'success',
     message: '',
     hideTimeout: 3000
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -106,7 +106,7 @@ class FlashMessage extends Component {
     const { status } = this.state;
     return (
       <div
-        className={`${styles.flashMessage} ${styles[type]} ${styles[status]}`}
+        style={Object.assign({}, styles.flashMessage, styles[type], styles[status])}
         onClick={this.onHideClick}
       >
         <span>{message}</span>
