@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { clearFlashMessage } from './actions';
-import { styles } from './styles';
 
 class FlashMessage extends Component {
   static propTypes = {
@@ -106,7 +105,7 @@ class FlashMessage extends Component {
     const { status } = this.state;
     return (
       <div
-        style={Object.assign({}, styles.flashMessage, styles[type], styles[status])}
+        className={`flash-message ${styles[type]} ${styles[status]}`}
         onClick={this.onHideClick}
       >
         <span>{message}</span>
