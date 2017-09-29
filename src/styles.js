@@ -1,9 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var styles = exports.styles = {
+export const styles = {
   flashMessage: {
     'position': 'fixed',
     'display': 'block',

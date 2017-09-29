@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { isEmpty } from './utils';
 import { clearFlashMessage } from './actions';
+import { styles } from './styles';
 
 class FlashMessage extends Component {
   static propTypes = {
@@ -10,14 +11,13 @@ class FlashMessage extends Component {
     message: PropTypes.string,
     hideTimeout: PropTypes.number,
     onClose: PropTypes.func.isRequired,
-    className: PropTypes.string
+    styles: PropTypes.object
   };
 
   static defaultProps = {
     type: 'success',
     message: '',
-    hideTimeout: 3000,
-    className: 'flash-message'
+    hideTimeout: 3000
   };
 
   constructor(props) {
@@ -103,12 +103,21 @@ class FlashMessage extends Component {
     }
   }
 
+  getStyles() {
+    if (this.props.styles) {
+      return this.props.styles;
+    }
+
+    return styles;
+  }
+
   render() {
-    const { type, message, className } = this.props;
+    const { type, message } = this.props;
     const { status } = this.state;
+    const divStyles = this.getStyles();
     return (
       <div
-        className={`${className} ${type} ${status}`}
+        style={Object.assign({}, divStyles.flashMessage, divStyles[type], divStyles[status])}
         onClick={this.onHideClick}
       >
         <span>{message}</span>
