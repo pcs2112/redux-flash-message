@@ -137,5 +137,5 @@ export const withFlashMessage = (WrappedComponent = flashMessage, stateName) => 
         dispatch(clearFlashMessage());
       }
     })
-  )(FlashMessage);
+  )(WithFlashMessage);
 };

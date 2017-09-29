@@ -1,7 +1,7 @@
-export const ERROR_FLASH = 'flashMessage/ERROR_FLASH';
-export const SUCCESS_FLASH = 'flashMessage/SUCCESS_FLASH';
-export const CLEAR_FLASH = 'flashMessage/CLEAR_FLASH';
-export const SHOW_FLASH = 'flashMessage/SHOW_FLASH';
+export const ERROR_FLASH = 'redux-flash-message/ERROR_FLASH';
+export const SUCCESS_FLASH = 'redux-flash-message/SUCCESS_FLASH';
+export const CLEAR_FLASH = 'redux-flash-message/CLEAR_FLASH';
+export const SHOW_FLASH = 'redux-flash-message/SHOW_FLASH';
 
 /**
  * Action to trigger a success/error flash message.
