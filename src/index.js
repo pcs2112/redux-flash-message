@@ -1,4 +1,3 @@
-import FlashMessage from './FlashMessage';
 export {
   SUCCESS_FLASH,
   ERROR_FLASH,
@@ -8,4 +7,4 @@ export {
   clearFlashMessage
 } from './actions';
 export reducer from './reducer';
-export default FlashMessage;
+export { withFlashMessage } from './WithFlashMessage';
