@@ -11,9 +11,9 @@ export const SHOW_FLASH = 'redux-flash-message/SHOW_FLASH';
  * @param {Boolean} isDelayed
  */
 export const triggerFlashMessage = (type, message, isDelayed = false) => ({
-  type: type,
-  message: message,
-  isDelayed: isDelayed
+  type,
+  message,
+  isDelayed
 });
 
 /**

@@ -3,18 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { isEmpty, getDisplayName } from './utils';
 import { clearFlashMessage } from './actions';
-import { styles } from './styles';
+import FlashMessageTemplate from './FlashMessageTemplate';
 
-const flashMessage = ({ type, status, message, onHideClick }) => (
-  <div
-    style={Object.assign({}, styles.flashMessage, styles[type], styles[status])}
-    onClick={onHideClick}
-  >
-    <span>{message}</span>
-  </div>
-);
-
-export const withFlashMessage = (WrappedComponent = flashMessage, stateName) => {
+const withFlashMessage = (WrappedComponent = FlashMessageTemplate, stateName) => {
   class WithFlashMessage extends Component {
     static propTypes = {
       type: PropTypes.oneOf(['success', 'error']),
@@ -114,7 +105,7 @@ export const withFlashMessage = (WrappedComponent = flashMessage, stateName) => 
 
     render() {
       return (
-        <WrappedComponent { ...this.props } { ...this.state } onHideClick={this.onHideClick} />
+        <WrappedComponent {...this.props} {...this.state} onHideClick={this.onHideClick} />
       );
     }
   }
@@ -132,10 +123,12 @@ export const withFlashMessage = (WrappedComponent = flashMessage, stateName) => 
 
       return {};
     },
-    (dispatch) => ({
+    dispatch => ({
       onClose: () => {
         dispatch(clearFlashMessage());
       }
     })
   )(WithFlashMessage);
 };
+
+export default withFlashMessage;

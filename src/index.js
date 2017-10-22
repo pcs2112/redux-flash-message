@@ -7,4 +7,4 @@ export {
   clearFlashMessage
 } from './actions';
 export reducer from './reducer';
-export { withFlashMessage } from './WithFlashMessage';
+export withFlashMessage from './WithFlashMessage';
