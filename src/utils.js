@@ -12,4 +12,4 @@ export const isEmpty = (value) => value === undefined || value === null || value
  * @returns {String}
  */
 export const getDisplayName = (WrappedComponent) =>
-  WrappedComponent.displayName || WrappedComponent.name || 'Component';
+    WrappedComponent.displayName || WrappedComponent.name || 'Component';
